@@ -1,0 +1,753 @@
+.vas-key-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem 3.5rem 3.5rem;
+  background: radial-gradient(circle at 50% 45%, #FCF8F2 0%, #F5ECE0 55%, #E5D7C2 100%);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  overflow: hidden;
+}
+
+/* Atmospheric Studio Glow Spotlight */
+.vaskey-backdrop-glow {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  height: 70vw;
+  max-width: 900px;
+  max-height: 900px;
+  background: radial-gradient(circle, rgba(255, 246, 228, 0.95) 0%, rgba(212, 186, 147, 0.4) 45%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Top Header */
+.vaskey-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 15;
+}
+
+.vaskey-header-logo {
+  font-family: var(--font-serif-display);
+  font-size: 2.4rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.vaskey-header-tagline {
+  font-family: var(--font-serif-editorial);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #7A6953;
+  line-height: 1;
+}
+
+/* Golden Energy Vortex Arcs */
+.vaskey-vortex-arcs {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 620px;
+  height: 620px;
+  max-width: 90vw;
+  max-height: 90vw;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 8;
+}
+
+.vortex-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Golden Aura Flash Shockwave */
+.vaskey-golden-aura {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 186, 147, 0.95) 0%, rgba(184, 151, 104, 0.45) 40%, transparent 70%);
+  filter: blur(30px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* Floating Stage for Exploded Purse Pieces */
+.vaskey-floating-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.vaskey-part-item {
+  position: absolute;
+  pointer-events: auto;
+  cursor: grab;
+  transition: filter 0.3s ease;
+  will-change: transform, top, left, opacity;
+  filter: drop-shadow(0 15px 30px rgba(28, 25, 23, 0.16));
+}
+
+.vaskey-part-item:hover {
+  filter: drop-shadow(0 20px 40px rgba(184, 151, 104, 0.55));
+}
+
+.piece-svg-direct {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Individual Floating Piece Sizes */
+.part-burgundy-flap { width: 170px; height: 170px; }
+.part-tan-roll { width: 140px; height: 175px; }
+.part-black-rod { width: 160px; height: 38px; }
+.part-wood-peg { width: 30px; height: 110px; }
+.part-ivory-linen { width: 150px; height: 160px; }
+.part-gold-clasp { width: 80px; height: 80px; }
+.part-red-tassel { width: 70px; height: 120px; }
+.part-burgundy-corner { width: 160px; height: 140px; }
+.part-ivory-swatch { width: 200px; height: 90px; }
+
+/* Assembled Masterpiece Handbag Stage (State 3: Ultra-Luxury Vitrine Display) */
+.vaskey-assembled-masterpiece-stage {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 24;
+  pointer-events: none;
+  width: 100%;
+  max-width: 480px;
+  padding: 0 1rem;
+}
+
+.status-assembled .vaskey-assembled-masterpiece-stage {
+  pointer-events: auto;
+}
+
+.assembled-purse-halo {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(212, 186, 147, 0.45) 0%, rgba(184, 151, 104, 0.2) 45%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+/* Unified Luxury Vitrine Exhibit Card */
+.assembled-vitrine-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 253, 249, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 24px;
+  border: 1px solid rgba(212, 186, 147, 0.55);
+  box-shadow: 0 25px 70px rgba(28, 25, 23, 0.16),
+              0 0 45px rgba(184, 151, 104, 0.2);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.assembled-vitrine-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 85px rgba(28, 25, 23, 0.2),
+              0 0 55px rgba(184, 151, 104, 0.3);
+}
+
+/* Top Atelier Hallmark Header */
+.assembled-vitrine-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vitrine-seal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-serif-heading);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-600);
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(184, 151, 104, 0.1);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(184, 151, 104, 0.3);
+}
+
+.vitrine-seal-badge .seal-sparkle {
+  font-size: 0.65rem;
+  color: var(--gold-500);
+  animation: sealSparklePulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes sealSparklePulse {
+  0% { transform: scale(0.85); opacity: 0.7; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Gilded Photo Display Frame */
+.assembled-photo-bag-card {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, #FFFDF9 0%, #F5ECE0 60%, #E6D8C4 100%);
+  border: 1px solid rgba(212, 186, 147, 0.45);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.04),
+              0 8px 24px rgba(28, 25, 23, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.assembled-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.assembled-vitrine-card:hover .assembled-photo-img {
+  transform: scale(1.04);
+}
+
+.assembled-photo-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(28, 25, 23, 0.15) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.assembled-photo-tag-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(28, 25, 23, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(212, 186, 147, 0.35);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.photo-tag-num {
+  font-family: var(--font-serif-heading);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--gold-300);
+  font-weight: 700;
+}
+
+.photo-tag-title {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  font-weight: 400;
+}
+
+/* Editorial Story & Body Details */
+.assembled-vitrine-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.65rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.assembled-vitrine-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.assembled-title-badge {
+  font-family: var(--font-serif-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-600);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.assembled-headline {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.assembled-subtext {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+  max-width: 360px;
+  font-weight: 300;
+}
+
+/* Material Badges Chips */
+.assembled-materials-chips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 0.1rem;
+}
+
+.mat-chip {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.mat-dot {
+  color: var(--gold-500);
+}
+
+/* Ultra-Luxury Gold-Accented CTA Button */
+.assembled-explore-cta {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 360px;
+  margin-top: 0.35rem;
+  background: linear-gradient(135deg, #221E1C 0%, #151311 100%);
+  color: #FFFDF9;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-serif-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(212, 186, 147, 0.4);
+  box-shadow: 0 10px 25px rgba(28, 25, 23, 0.2),
+              0 0 20px rgba(184, 151, 104, 0.15);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.assembled-explore-cta:hover {
+  background: linear-gradient(135deg, #B89768 0%, #8A6A3A 100%);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  border-color: rgba(255, 245, 222, 0.7);
+  box-shadow: 0 14px 35px rgba(184, 151, 104, 0.45);
+}
+
+.cta-sparkle-icon {
+  font-size: 0.65rem;
+  color: var(--gold-400);
+  transition: color 0.3s ease;
+}
+
+.assembled-explore-cta:hover .cta-sparkle-icon {
+  color: #FFFFFF;
+}
+
+.cta-arrow-icon {
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.assembled-explore-cta:hover .cta-arrow-icon {
+  transform: translateY(2px);
+}
+
+.cta-shimmer-sweep {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: skewX(-22deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+
+.assembled-explore-cta:hover .cta-shimmer-sweep {
+  left: 140%;
+}
+
+/* ==============================================================
+   HIGH-AESTHETIC BOTTOM CONTROLS AREA
+   ============================================================== */
+
+.vaskey-bottom-controls-wrap {
+  position: relative;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  margin-top: auto;
+  padding-bottom: 1.5rem;
+}
+
+/* Label Badge Header */
+.vaskey-label-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.label-line-left,
+.label-line-right {
+  flex: 1;
+  height: 1px;
+  max-width: 45px;
+  background: linear-gradient(90deg, transparent, rgba(184, 151, 104, 0.65));
+}
+
+.label-line-right {
+  background: linear-gradient(90deg, rgba(184, 151, 104, 0.65), transparent);
+}
+
+.label-key-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--gold-600);
+  filter: drop-shadow(0 0 6px rgba(184, 151, 104, 0.4));
+  flex-shrink: 0;
+}
+
+.vaskey-bottom-label {
+  font-family: var(--font-serif-heading);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #423220 0%, #8A6A3A 50%, #423220 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 12px rgba(184, 151, 104, 0.15);
+  white-space: nowrap;
+}
+
+/* Pill Form */
+.vaskey-pill-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+/* Masterpiece Luxury Pill Group */
+.vaskey-pill-group {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 248, 240, 0.94) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(184, 151, 104, 0.45);
+  border-radius: var(--radius-pill);
+  padding: 5px 5px 5px 1.25rem;
+  box-shadow: 0 12px 35px rgba(28, 25, 23, 0.08),
+              0 0 25px rgba(184, 151, 104, 0.18),
+              inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vaskey-pill-group:focus-within {
+  border-color: var(--gold-600);
+  box-shadow: 0 16px 45px rgba(184, 151, 104, 0.35),
+              0 0 30px rgba(184, 151, 104, 0.25),
+              inset 0 1px 2px #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.vaskey-pill-group.pill-error {
+  border-color: #9E2A2B;
+  box-shadow: 0 0 30px rgba(158, 42, 43, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+/* Input Prefix Icon */
+.input-prefix-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-600);
+  margin-right: 0.65rem;
+  opacity: 0.85;
+  transition: transform 0.3s ease, color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.prefix-svg {
+  width: 18px;
+  height: 18px;
+}
+
+.vaskey-pill-group:focus-within .input-prefix-icon {
+  color: var(--gold-700);
+  transform: rotate(-10deg) scale(1.1);
+}
+
+/* Pill Input Text */
+.vaskey-pill-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.75rem 0.5rem;
+  font-family: var(--font-serif-heading);
+  font-size: 1.05rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #1E1A16;
+  font-weight: 700;
+  outline: none;
+}
+
+.vaskey-pill-input::placeholder {
+  font-family: var(--font-serif-heading);
+  color: rgba(140, 115, 80, 0.6);
+  letter-spacing: 0.22em;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* Pill Action Button (Tactile Luxury Button) */
+.vaskey-pill-btn {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: linear-gradient(145deg, #24201D 0%, #12100E 100%);
+  border: 1px solid rgba(212, 186, 147, 0.45);
+  color: #FFF8EB;
+  padding: 0.82rem 2.2rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-serif-heading);
+  font-size: 0.82rem;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(28, 25, 23, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.btn-text {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-arrow-icon {
+  position: relative;
+  z-index: 2;
+  font-size: 0.95rem;
+  color: var(--gold-400);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.btn-shimmer-sweep {
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 245, 222, 0.35), transparent);
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: all 0.75s ease;
+  z-index: 1;
+}
+
+.vaskey-pill-btn:hover {
+  background: linear-gradient(135deg, #B89768 0%, #7D5E30 100%);
+  color: #FFFFFF;
+  border-color: #FFF2DB;
+  box-shadow: 0 10px 30px rgba(184, 151, 104, 0.5), 0 0 20px rgba(255, 235, 195, 0.4);
+  transform: translateY(-1px);
+}
+
+.vaskey-pill-btn:hover .btn-arrow-icon {
+  transform: translateX(4px);
+  color: #FFFFFF;
+}
+
+.vaskey-pill-btn:hover .btn-shimmer-sweep {
+  left: 180%;
+}
+
+.vaskey-pill-btn:active {
+  transform: scale(0.97);
+}
+
+/* Error Message (State 2) */
+.vaskey-error-msg {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-serif-editorial);
+  font-size: 0.98rem;
+  font-style: italic;
+  color: #B22222;
+  animation: fadeIn 0.3s ease;
+}
+
+.error-icon {
+  font-size: 0.75rem;
+  color: #B22222;
+}
+
+/* Demo Key Helper Tag */
+.vaskey-demo-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  color: #7A6953;
+  margin-top: 0.25rem;
+}
+
+.hint-label {
+  font-family: var(--font-sans);
+  letter-spacing: 0.05em;
+}
+
+.demo-key-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-serif-heading);
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 236, 224, 0.9) 100%);
+  color: var(--gold-700);
+  border: 1px solid rgba(184, 151, 104, 0.5);
+  padding: 0.28rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(184, 151, 104, 0.15);
+  transition: all 0.25s ease;
+}
+
+.demo-key-chip:hover {
+  background: linear-gradient(135deg, #B89768 0%, #8A6A3A 100%);
+  color: #FFFFFF;
+  border-color: #FFF2DB;
+  box-shadow: 0 6px 18px rgba(184, 151, 104, 0.4);
+  transform: translateY(-1px);
+}
+
+.chip-sparkle {
+  font-size: 0.75rem;
+  animation: pulseSparkle 2s infinite ease-in-out;
+}
+
+@keyframes pulseSparkle {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .vas-key-section {
+    padding: 3rem 1.5rem 2.5rem;
+    min-height: 90vh;
+  }
+
+  .vaskey-header-logo {
+    font-size: 1.8rem;
+  }
+
+  .vaskey-header-tagline {
+    font-size: 0.95rem;
+  }
+
+  .vaskey-bottom-controls-wrap {
+    max-width: 100%;
+  }
+
+  .vaskey-pill-btn {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .part-burgundy-flap { width: 110px; height: 110px; }
+  .part-tan-roll { width: 95px; height: 120px; }
+  .part-black-rod { width: 110px; height: 28px; }
+  .part-wood-peg { width: 22px; height: 75px; }
+  .part-ivory-linen { width: 100px; height: 110px; }
+  .part-gold-clasp { width: 55px; height: 55px; }
+  .part-red-tassel { width: 50px; height: 80px; }
+  .part-burgundy-corner { width: 110px; height: 95px; }
+  .part-ivory-swatch { width: 140px; height: 60px; }
+
+  .assembled-vector-bag-card {
+    width: 300px;
+  }
+}

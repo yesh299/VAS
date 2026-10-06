@@ -1,0 +1,228 @@
+.vas-about {
+  position: relative;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-light);
+  overflow: hidden;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.header-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-400) 0%, transparent 100%);
+  opacity: 0.5;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 5rem;
+  align-items: flex-start;
+}
+
+/* Left Column */
+.about-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about-heading {
+  font-family: var(--font-serif-display);
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.about-heading-accent {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-600);
+}
+
+.about-craft-visual {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+}
+
+.about-craft-img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+}
+
+.craft-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.25rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(18, 17, 16, 0.85) 100%);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.craft-badge {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-300);
+}
+
+.craft-desc {
+  font-family: var(--font-serif-editorial);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-light-muted);
+}
+
+/* Right Column */
+.about-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+.about-lead-text {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.5;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.about-sub-text {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+/* Stats Grid */
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 2.25rem 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-top: 1rem;
+}
+
+.about-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.stat-value {
+  font-family: var(--font-serif-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold-600);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Seal Block */
+.about-seal-block {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-top: 1rem;
+}
+
+.seal-ring {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+}
+
+.seal-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.seal-text {
+  font-family: var(--font-serif-heading);
+  font-size: 8.5px;
+  letter-spacing: 2.2px;
+  fill: var(--gold-600);
+  font-weight: 600;
+}
+
+.seal-center-v {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-serif-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold-600);
+}
+
+.seal-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.seal-meta-title {
+  font-family: var(--font-serif-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.seal-meta-sub {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .about-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}

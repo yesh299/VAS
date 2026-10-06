@@ -1,0 +1,128 @@
+/* ==============================================================
+   COMPACT CORNER STORY CARD (Matching User's Reference Layout)
+   ============================================================== */
+
+.vas-corner-story-card {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  max-width: calc(100% - 40px);
+  background: rgba(28, 25, 23, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(212, 186, 147, 0.45);
+  border-radius: 12px;
+  padding: 1.15rem 1.35rem 1.25rem;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.38),
+              0 0 25px rgba(184, 151, 104, 0.18);
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vas-corner-story-card:hover {
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45),
+              0 0 35px rgba(184, 151, 104, 0.25);
+}
+
+/* Top Header Row */
+.corner-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.55rem;
+}
+
+.corner-card-tag {
+  font-family: var(--font-serif-heading);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--gold-400);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.corner-card-close-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  line-height: 1;
+  border-radius: 4px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.corner-card-close-btn:hover {
+  color: #FFFFFF;
+  transform: scale(1.15);
+}
+
+/* Craft Title */
+.corner-card-title {
+  font-family: var(--font-serif-heading);
+  font-size: 1.12rem;
+  color: #FFFFFF;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  line-height: 1.25;
+}
+
+/* Compact Narrative */
+.corner-card-story {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: #D6CEBD;
+  font-weight: 300;
+  margin: 0 0 0.85rem;
+}
+
+/* Footer Link with Gold Underline */
+.corner-card-footer {
+  display: flex;
+  align-items: center;
+  padding-top: 0.45rem;
+  border-top: 1px solid rgba(212, 186, 147, 0.22);
+}
+
+.corner-card-link {
+  font-family: var(--font-serif-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #FFFDF9;
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-400);
+  padding-bottom: 2px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.corner-card-link:hover {
+  color: var(--gold-300);
+  border-color: #FFFFFF;
+}
+
+@media (max-width: 640px) {
+  .vas-corner-story-card {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    max-width: none;
+    padding: 1rem;
+  }
+  
+  .corner-card-title {
+    font-size: 1.02rem;
+  }
+  
+  .corner-card-story {
+    font-size: 0.82rem;
+  }
+}

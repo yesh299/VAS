@@ -1,0 +1,116 @@
+.vas-collections-section {
+  position: relative;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-light);
+}
+
+.collections-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.collections-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.collections-heading {
+  font-family: var(--font-serif-heading);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+}
+
+.collections-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.5rem;
+  max-width: 480px;
+}
+
+.collections-lead {
+  font-family: var(--font-serif-editorial);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  text-align: right;
+  line-height: 1.5;
+}
+
+.collections-filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-primary);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill);
+  transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--gold-400);
+}
+
+.filter-btn.active {
+  background: var(--text-primary);
+  color: #FFFFFF;
+  border-color: var(--text-primary);
+}
+
+/* Grid Layout: 4 Cards in 1 Row */
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem 1.35rem;
+}
+
+@media (max-width: 1200px) {
+  .collections-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .collections-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .collections-header-right {
+    align-items: flex-start;
+  }
+
+  .collections-lead {
+    text-align: left;
+  }
+
+  .collections-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .collections-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
