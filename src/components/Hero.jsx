@@ -12,6 +12,27 @@ export default function Hero({ onExploreClick, onScrollClick }) {
   const visualStageRef = useRef(null);
   const scrollRef = useRef(null);
   const ambientHaloRef = useRef(null);
+  const assembledReturnTimeoutRef = useRef(null);
+
+  const showAssembledForm = () => {
+    setViewMode("assembled");
+    if (assembledReturnTimeoutRef.current) {
+      window.clearTimeout(assembledReturnTimeoutRef.current);
+    }
+    assembledReturnTimeoutRef.current = window.setTimeout(() => {
+      setViewMode("exploded");
+      assembledReturnTimeoutRef.current = null;
+    }, 5000);
+  };
+
+  useEffect(
+    () => () => {
+      if (assembledReturnTimeoutRef.current) {
+        window.clearTimeout(assembledReturnTimeoutRef.current);
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
@@ -60,6 +81,11 @@ export default function Hero({ onExploreClick, onScrollClick }) {
       {/* Warm Ivory Atmospheric Ambient Lighting */}
       <div ref={ambientHaloRef} className="hero-ambient-glow" aria-hidden="true" />
       <div className="hero-subtle-mesh-texture" aria-hidden="true" />
+      <div className="hero-floating-glitter" aria-hidden="true">
+        {Array.from({ length: 18 }, (_, index) => (
+          <span key={index} className={`hero-glitter-particle hero-glitter-${index + 1}`} />
+        ))}
+      </div>
 
       <div className="container-luxury hero-grid-panel5">
         
@@ -101,7 +127,7 @@ export default function Hero({ onExploreClick, onScrollClick }) {
               </button>
               <button
                 className={`toggle-tab ${viewMode === 'assembled' ? 'active' : ''}`}
-                onClick={() => setViewMode('assembled')}
+                onClick={showAssembledForm}
                 data-cursor="pointer"
               >
                 Assembled Form
@@ -124,7 +150,10 @@ export default function Hero({ onExploreClick, onScrollClick }) {
         </div>
 
         {/* Right Column: Handcrafted Luxury Handbag Masterpiece */}
-        <div ref={visualStageRef} className="hero-right-visual">
+        <div
+          ref={visualStageRef}
+          className={`hero-right-visual hero-view-${viewMode}`}
+        >
           {viewMode === 'assembled' ? (
             <div className="hero-silk-plinth-frame" data-cursor="view" data-cursor-text="VIEW">
               <div className="hero-image-vignette" />

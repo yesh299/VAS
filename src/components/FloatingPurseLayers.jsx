@@ -143,13 +143,10 @@ export default function FloatingPurseLayers({
 
   const handleMouseLeave = () => {
     setActiveLayer(null);
-    if (!stageRef.current) return;
-    gsap.to(stageRef.current, {
-      rotateX: 0,
-      rotateY: 0,
-      duration: 0.8,
-      ease: "power2.out",
-    });
+    if (tiltX.current && tiltY.current) {
+      tiltX.current(0);
+      tiltY.current(0);
+    }
   };
 
   return (

@@ -26,7 +26,7 @@ const formatKeyInput = (val) => {
   return parts.join("-");
 };
 
-export default function VASKeySection({ isUnlocked, onUnlockSuccess }) {
+export default function VASKeySection({ onUnlockSuccess }) {
   const [inputKey, setInputKey] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [status, setStatus] = useState("idle"); // 'idle', 'error', 'assembling', 'assembled'
@@ -36,6 +36,7 @@ export default function VASKeySection({ isUnlocked, onUnlockSuccess }) {
   const glowAuraRef = useRef(null);
   const vortexArcsRef = useRef(null);
   const assembledBagRef = useRef(null);
+  const welcomeSpokenRef = useRef(false);
 
   // References for all 9 matching exploded pieces
   const part1Ref = useRef(null); // Burgundy Silk Flap
@@ -123,9 +124,69 @@ export default function VASKeySection({ isUnlocked, onUnlockSuccess }) {
     },
   ];
 
+  const speakMessage = (message, markAsWelcome = false) => {
+    if (!("speechSynthesis" in window)) return false;
+
+    window.speechSynthesis.cancel();
+    const voices = window.speechSynthesis.getVoices();
+    const maleVoicePattern =
+      /Google UK English Male|Google US English Male|Microsoft David|Microsoft Mark|Microsoft George|Alex|Daniel|Fred|Arthur|Thomas/i;
+    const femaleVoicePattern =
+      /Aria|Samantha|Karen|Hazel|Susan|Zira|Jenny|Ava|Victoria|Google US English$/i;
+    const preferredVoice =
+      voices.find(
+        (voice) =>
+          maleVoicePattern.test(voice.name) && /^en(-|_)/i.test(voice.lang),
+      ) ||
+      voices.find(
+        (voice) =>
+          /^en(-|_)/i.test(voice.lang) &&
+          !femaleVoicePattern.test(voice.name),
+      );
+
+    const utterance = new SpeechSynthesisUtterance(message);
+    utterance.lang = preferredVoice?.lang || "en-US";
+    if (preferredVoice) utterance.voice = preferredVoice;
+    utterance.rate = 0.76;
+    utterance.pitch = 0.88;
+    utterance.volume = 1;
+    if (markAsWelcome) {
+      utterance.onstart = () => {
+        welcomeSpokenRef.current = true;
+      };
+    }
+    window.speechSynthesis.speak(utterance);
+    return true;
+  };
+
+  useEffect(() => {
+    if (welcomeSpokenRef.current) return undefined;
+
+    const speakOnOpen = () => {
+      speakMessage("Welcome to the world of Vas.", true);
+    };
+    const speakOnInteraction = () => {
+      if (!welcomeSpokenRef.current && !window.speechSynthesis?.speaking) {
+        speakOnOpen();
+      }
+    };
+
+    const timer = window.setTimeout(speakOnOpen, 500);
+    window.addEventListener("pointerdown", speakOnInteraction, {
+      passive: true,
+    });
+    window.addEventListener("keydown", speakOnInteraction);
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("pointerdown", speakOnInteraction);
+      window.removeEventListener("keydown", speakOnInteraction);
+    };
+  }, []);
+
   // Idle Floating Animation for Exploded Pieces
   useEffect(() => {
-    if (status === "assembling" || status === "assembled" || isUnlocked) return;
+    if (status === "assembling" || status === "assembled") return;
 
     const ctx = gsap.context(() => {
       partsConfig.forEach((p, idx) => {
@@ -147,39 +208,10 @@ export default function VASKeySection({ isUnlocked, onUnlockSuccess }) {
       });
     }, sectionRef);
 
-    // Mouse parallax over the VAS Key Section
-    let frameId = 0;
-    let pointerX = 0;
-    let pointerY = 0;
-    const handleMouseMove = (e) => {
-      pointerX = e.clientX;
-      pointerY = e.clientY;
-      if (frameId) return;
-      frameId = requestAnimationFrame(() => {
-        frameId = 0;
-        if (status === "assembling" || status === "assembled" || isUnlocked) return;
-        const rect = sectionRef.current?.getBoundingClientRect();
-        if (!rect) return;
-        const normX = (pointerX - (rect.left + rect.width / 2)) / (rect.width / 2);
-        const normY = (pointerY - (rect.top + rect.height / 2)) / (rect.height / 2);
-        partsConfig.forEach((p) => {
-          if (p.ref.current) {
-            const moveX = normX * 18 * p.depth;
-            const moveY = normY * 18 * p.depth;
-            p.ref.current.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) rotate(${p.initial.rot}deg) scale(${p.initial.scale})`;
-          }
-        });
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-
     return () => {
       ctx.revert();
-      window.removeEventListener("mousemove", handleMouseMove);
-      if (frameId) cancelAnimationFrame(frameId);
     };
-  }, [status, isUnlocked]);
+  }, [status]);
 
   // Form Submit Handler
   const handleUnlockSubmit = (e) => {
@@ -206,6 +238,7 @@ export default function VASKeySection({ isUnlocked, onUnlockSuccess }) {
   const triggerWrongKey = () => {
     setStatus("error");
     setErrorMsg("Invalid VAS Key");
+    speakMessage("VAS key is invalid.");
 
     if (bottomControlsRef.current) {
       gsap.fromTo(
@@ -243,6 +276,7 @@ export default function VASKeySection({ isUnlocked, onUnlockSuccess }) {
 
   // State 3: Correct Key Assembly (Panel 3 from User Reference)
   const triggerAssembly = () => {
+    speakMessage("Welcome to the inner world of Vas.");
     setStatus("assembling");
     setErrorMsg("");
 
@@ -357,10 +391,16 @@ export default function VASKeySection({ isUnlocked, onUnlockSuccess }) {
 
       {/* Top Header Row */}
       <div className="vaskey-top-header container-luxury">
-        <span className="vaskey-header-logo">VAS</span>
-        <span className="vaskey-header-tagline">
-          CARRY YOUR SPACE · OBJECT DISCOVERY
-        </span>
+        <div className="vaskey-header-brand">
+          <span className="vaskey-header-kicker">THE VAS KEY</span>
+          <span className="vaskey-header-logo">VAS</span>
+        </div>
+        <div className="vaskey-header-copy">
+          <span className="vaskey-header-rule" aria-hidden="true" />
+          <span className="vaskey-header-tagline">
+            CARRY YOUR SPACE <span aria-hidden="true">·</span> OBJECT DISCOVERY
+          </span>
+        </div>
       </div>
 
       {/* Golden Energy Vortex Arcs */}

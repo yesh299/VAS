@@ -7,11 +7,11 @@
   justify-content: space-between;
   padding: calc(var(--header-height) + 2.5rem) 3.5rem 3rem;
   scroll-margin-top: var(--header-height);
-  background-color: #EBD4AE;
+  background-color: #F4EBDD;
   background-image:
-    radial-gradient(circle at 50% 45%, rgba(255, 246, 225, 0.95) 0%, rgba(245, 225, 187, 0.7) 48%, rgba(213, 177, 123, 0.42) 100%),
-    radial-gradient(ellipse at 18% 78%, rgba(174, 126, 75, 0.1), transparent 42%),
-    radial-gradient(ellipse at 84% 24%, rgba(255, 250, 232, 0.34), transparent 38%);
+    radial-gradient(circle at 50% 46%, rgba(255, 252, 244, 0.98) 0%, rgba(247, 237, 220, 0.78) 52%, rgba(230, 211, 181, 0.5) 100%),
+    radial-gradient(ellipse at 15% 82%, rgba(174, 126, 75, 0.08), transparent 40%),
+    radial-gradient(ellipse at 86% 18%, rgba(255, 250, 232, 0.32), transparent 36%);
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
   overflow: hidden;
@@ -37,27 +37,65 @@
 .vaskey-top-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 0.25rem;
   position: relative;
   z-index: 15;
 }
 
+.vaskey-header-brand,
+.vaskey-header-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.vaskey-header-brand {
+  gap: 0.45rem;
+}
+
+.vaskey-header-kicker {
+  color: var(--gold-600);
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 .vaskey-header-logo {
   font-family: var(--font-serif-display);
-  font-size: 2.25rem;
-  letter-spacing: 0.22em;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.2em;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1;
 }
 
+.vaskey-header-copy {
+  align-items: flex-end;
+  gap: 0.55rem;
+  padding-bottom: 0.12rem;
+}
+
+.vaskey-header-rule {
+  width: 58px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 151, 104, 0.7));
+}
+
 .vaskey-header-tagline {
   font-family: var(--font-serif-editorial);
-  font-size: 1rem;
+  max-width: 250px;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-align: right;
   font-style: italic;
   color: #7A6953;
-  line-height: 1;
+  line-height: 1.3;
 }
 
 /* Golden Energy Vortex Arcs */
@@ -100,20 +138,21 @@
 /* Floating Stage for Exploded Purse Pieces */
 .vaskey-floating-stage {
   position: absolute;
-  top: 0;
+  top: 6%;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 82%;
   pointer-events: none;
   z-index: 5;
+  background: radial-gradient(circle at 50% 48%, rgba(255, 248, 229, 0.2), transparent 34%);
 }
 
 .vaskey-part-item {
   position: absolute;
   pointer-events: auto;
-  cursor: grab;
+  cursor: default;
   transition: filter 0.3s ease;
-  will-change: transform, top, left, opacity;
+  will-change: transform, opacity;
   filter: drop-shadow(0 15px 30px rgba(28, 25, 23, 0.16));
 }
 
@@ -456,12 +495,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.15rem;
+  gap: 1.35rem;
   width: 100%;
-  max-width: 360px;
+  max-width: 430px;
   margin: 0 auto;
   margin-top: auto;
-  padding-bottom: 1.5rem;
+  padding: 0 0.75rem 1.5rem;
 }
 
 /* Label Badge Header */
@@ -469,8 +508,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.85rem;
+  gap: 0.7rem;
   width: 100%;
+  padding: 0 0.25rem;
 }
 
 .label-line-left,
@@ -495,8 +535,8 @@
 
 .vaskey-bottom-label {
   font-family: var(--font-serif-heading);
-  font-size: 0.78rem;
-  letter-spacing: 0.28em;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
   font-weight: 700;
   text-transform: uppercase;
   background: linear-gradient(135deg, #423220 0%, #8A6A3A 50%, #423220 100%);
@@ -512,7 +552,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.95rem;
+  gap: 0.8rem;
 }
 
 /* Masterpiece Luxury Pill Group */
@@ -526,7 +566,8 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1.5px solid rgba(184, 151, 104, 0.45);
   border-radius: var(--radius-pill);
-  padding: 5px 5px 5px 1.25rem;
+  padding: 6px 6px 6px 1.35rem;
+  min-height: 68px;
   box-shadow: 0 12px 35px rgba(28, 25, 23, 0.08),
               0 0 25px rgba(184, 151, 104, 0.18),
               inset 0 1px 2px rgba(255, 255, 255, 0.9);
@@ -573,9 +614,9 @@
   flex: 1;
   border: none;
   background: transparent;
-  padding: 0.75rem 0.5rem;
+  padding: 0.82rem 0.5rem;
   font-family: var(--font-serif-heading);
-  font-size: 1.05rem;
+  font-size: 1.12rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: #1E1A16;
@@ -601,15 +642,24 @@
   background: linear-gradient(145deg, #24201D 0%, #12100E 100%);
   border: 1px solid rgba(212, 186, 147, 0.45);
   color: #FFF8EB;
-  padding: 0.82rem 2.2rem;
+  padding: 0.92rem 1.65rem 0.92rem 1.8rem;
   border-radius: var(--radius-pill);
   font-family: var(--font-serif-heading);
-  font-size: 0.82rem;
-  letter-spacing: 0.25em;
+  font-size: 0.76rem;
+  letter-spacing: 0.2em;
   font-weight: 700;
   box-shadow: 0 6px 20px rgba(28, 25, 23, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
+}
+
+.vaskey-pill-btn::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255, 245, 222, 0.16);
+  border-radius: inherit;
+  pointer-events: none;
 }
 
 .btn-text {
@@ -620,7 +670,7 @@
 .btn-arrow-icon {
   position: relative;
   z-index: 2;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   color: var(--gold-400);
   transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -657,6 +707,12 @@
 
 .vaskey-pill-btn:active {
   transform: scale(0.97);
+}
+
+.vaskey-pill-btn:focus-visible,
+.vaskey-pill-input:focus-visible {
+  outline: 2px solid rgba(184, 151, 104, 0.65);
+  outline-offset: 3px;
 }
 
 /* Error Message (State 2) */
@@ -735,8 +791,17 @@
     font-size: 1.8rem;
   }
 
+  .vaskey-header-kicker {
+    font-size: 0.5rem;
+  }
+
+  .vaskey-header-copy {
+    max-width: 155px;
+  }
+
   .vaskey-header-tagline {
-    font-size: 0.95rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
   }
 
   .vaskey-bottom-controls-wrap {
