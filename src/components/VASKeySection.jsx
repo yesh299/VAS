@@ -349,11 +349,11 @@ export default function VASKeySection({ isUnlocked, onUnlockSuccess }) {
       {/* Warm Atmospheric Luxury Studio Spotlight */}
       <div className="vaskey-backdrop-glow" aria-hidden="true" />
 
-      {/* Top Header Row (Exact user reference art: VAS at left, Story at right) */}
+      {/* Top Header Row */}
       <div className="vaskey-top-header container-luxury">
         <span className="vaskey-header-logo">VAS</span>
         <span className="vaskey-header-tagline">
-          More than a bag, it's a story.
+          CARRY YOUR SPACE · OBJECT DISCOVERY
         </span>
       </div>
 

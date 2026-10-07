@@ -132,9 +132,19 @@ export const collections = [
 ];
 
 export const brandManifesto = {
-  quote: "Form, material and transformation.",
-  body1: "VAS explores the relationship between material, craft and movement. Every object is designed with a focus on form, texture and the stories that surround it.",
-  body2: "From the golden zari looms of Varanasi to the sand-cast brass ateliers of Rajasthan, VAS translates ancient Indian craft vernaculars into timeless, minimalist sculptural luxury.",
+  tagline: "CARRY YOUR SPACE",
+  quote: "Form, material and the stories of the places that inspire it.",
+  aboutVas: {
+    title: "About VAS",
+    lead: "VAS is a design-led luxury object house built around the idea of CARRY YOUR SPACE.",
+    body: "We see the clutch as more than an accessory. It is an object shaped by form, function, material and the stories of the places that inspire it. Through a considered design language and an editorial approach, VAS invites you to discover the connection between an object and the world around it."
+  },
+  companyBehind: {
+    title: "The Company Behind VAS",
+    lead: "VAS is developed and brought to life with Mudra Essentials Pvt. Ltd., the company behind its development, manufacturing and execution.",
+    body: "Together, the brand and its making process bring the VAS vision into a physical object—where design intention, material and function come together.",
+    distinction: "VAS is the brand. Mudra Essentials Pvt. Ltd. is the company behind its creation."
+  },
   stats: [
     { value: "100%", label: "Hand-Crafted in India" },
     { value: "08+", label: "Generational Craft Guilds" },

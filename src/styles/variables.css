@@ -1,49 +1,68 @@
 :root {
-  /* Luxury Palette - Editorial Cream, Sand, Warm Beige, Antique Gold, Deep Espresso */
-  --bg-primary: #FAF7F2;
-  --bg-secondary: #F3ECE2;
-  --bg-tertiary: #EBE2D5;
-  --bg-dark: #121110;
-  --bg-dark-surface: #1C1A18;
-  --bg-dark-card: #23201D;
+  /* Luxury Palette - Warm Ivory, Off-White, Deep Brown, Restrained Muted Green */
+  --bg-primary: #FAF8F5;          /* Warm Ivory */
+  --bg-secondary: #F4EFE6;        /* Soft Off-White Sand */
+  --bg-tertiary: #ECE5DB;         /* Warm Natural Neutral */
+  --bg-card: #FFFFFF;
+  --bg-card-warm: #FAF6F0;
   
-  /* Text & Accents */
-  --text-primary: #1C1917;
-  --text-secondary: #57524C;
-  --text-muted: #8C847B;
-  --text-light: #F9F6F0;
-  --text-light-muted: #B8B0A5;
+  /* Deep Brown Foundation & Dark Surfaces */
+  --bg-dark: #1E1714;             /* Deep Rich Brown */
+  --bg-dark-surface: #29201B;     /* Deep Espresso Surface */
+  --bg-dark-card: #342A24;        /* Deep Warm Brown Card */
   
-  /* Gold & Brass Luxury Metals */
+  /* Typography & Neutral Colors */
+  --text-primary: #221B17;        /* Deep Brown-Black Charcoal */
+  --text-secondary: #584F48;      /* Warm Slate Brown */
+  --text-muted: #8A7E75;          /* Refined Warm Gray/Brown */
+  --text-light: #FAF8F5;          /* Warm Ivory Light Text */
+  --text-light-muted: #C8BFB5;    /* Soft Muted Sand */
+  
+  /* Deep Browns */
+  --brown-900: #1E1714;
+  --brown-800: #2C211B;
+  --brown-700: #3E3128;
+  --brown-600: #57463B;
+  --brown-500: #7A6658;
+  --brown-400: #9F8C7D;
+
+  /* Restrained Muted-Green Accents */
+  --green-accent: #3E4E40;        /* Restrained Muted Forest Sage */
+  --green-muted: #516253;         /* Soft Olive Sage */
+  --green-deep: #2A362C;          /* Deep Muted Pine */
+  --green-subtle: #EBF0EA;        /* Subtle Light Green Tint */
+  --green-badge-bg: rgba(62, 78, 64, 0.08);
+  --green-badge-border: rgba(62, 78, 64, 0.22);
+  
+  /* Restrained Brass & Soft Warm Accents */
   --gold-300: #E6D2B5;
-  --gold-400: #D4BA93;
-  --gold-500: #B89768;
-  --gold-600: #9A7B4D;
-  --gold-700: #7A5F35;
+  --gold-400: #D1B892;
+  --gold-500: #B5966B;
+  --gold-600: #96784E;
+  --gold-700: #735934;
   
-  /* Earth Tones */
-  --terracotta: #A65D48;
-  --forest-dark: #2B3A31;
-  --emerald-rich: #1E382B;
-  --burgundy: #59232B;
+  /* Earth & Atelier Tones */
+  --terracotta: #9E5642;
+  --burgundy: #5C222B;
   
-  /* Glass & Borders */
-  --border-light: rgba(184, 151, 104, 0.2);
-  --border-subtle: rgba(28, 25, 23, 0.08);
-  --border-dark: rgba(255, 255, 255, 0.12);
-  --glass-bg: rgba(250, 247, 242, 0.75);
-  --glass-dark-bg: rgba(18, 17, 16, 0.85);
+  /* Glass, Borders & Lines */
+  --border-light: rgba(150, 120, 78, 0.18);
+  --border-subtle: rgba(34, 27, 23, 0.08);
+  --border-green: rgba(62, 78, 64, 0.2);
+  --border-dark: rgba(250, 248, 245, 0.12);
+  --glass-bg: rgba(250, 248, 245, 0.82);
+  --glass-dark-bg: rgba(30, 23, 20, 0.88);
   --glass-blur: blur(16px);
   
   /* Shadows */
-  --shadow-sm: 0 4px 12px rgba(28, 25, 23, 0.04);
-  --shadow-md: 0 12px 32px rgba(28, 25, 23, 0.08);
-  --shadow-lg: 0 24px 64px rgba(28, 25, 23, 0.14);
-  --shadow-gold: 0 8px 32px rgba(184, 151, 104, 0.25);
-  --shadow-dark: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 4px 12px rgba(34, 27, 23, 0.04);
+  --shadow-md: 0 12px 32px rgba(34, 27, 23, 0.07);
+  --shadow-lg: 0 24px 64px rgba(34, 27, 23, 0.11);
+  --shadow-gold: 0 8px 32px rgba(181, 150, 107, 0.2);
+  --shadow-dark: 0 20px 50px rgba(15, 10, 8, 0.5);
 
   /* Typography */
-  --font-serif-display: 'Italiana', 'Cormorant Garamond', serif;
+  --font-serif-display: 'Italiana', 'Cormorant Garamond', Georgia, serif;
   --font-serif-editorial: 'Cormorant Garamond', Georgia, serif;
   --font-serif-heading: 'Cinzel', serif;
   --font-sans: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;

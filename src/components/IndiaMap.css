@@ -1,6 +1,6 @@
 .vas-india-map-section {
   position: relative;
-  background: #F4EFEB;
+  background: #F3EAD7;
   border-top: 1px solid rgba(212, 186, 147, 0.25);
   padding: 5.5rem 0 6rem;
   overflow: hidden;
@@ -63,8 +63,8 @@
 .map-canvas-stage {
   position: relative;
   width: 100%;
-  max-width: 700px;
-  aspect-ratio: 680 / 1020;
+  max-width: 800px;
+  aspect-ratio: 799 / 768;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,12 +75,12 @@
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
   border: 1px solid rgba(212, 186, 147, 0.45);
   box-shadow: 0 20px 60px rgba(28, 25, 23, 0.08),
               0 0 35px rgba(184, 151, 104, 0.12);
-  background: transparent;
+  background: #F3EAD7;
   display: flex;
   align-items: center;
   justify-content: center;

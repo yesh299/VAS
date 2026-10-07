@@ -81,7 +81,7 @@ export default function AcquisitionModal({ collection, onClose }) {
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="e.g. Paris / London / New Delhi / New York"
+                placeholder="e.g. New Delhi / Mumbai / Bengaluru"
               />
             </div>
 

@@ -44,17 +44,25 @@ export default function Navbar({ isUnlocked, onNavigate }) {
             onClick={(e) => handleLinkClick(e, "hero")}
           >
             <span className="vas-logo-text">VAS</span>
-            <span className="vas-logo-sub">HAUTE MAROQUINERIE</span>
+            <span className="vas-logo-sub">CARRY YOUR SPACE</span>
           </a>
 
           {/* Desktop Nav Items */}
           <nav className="vas-nav-desktop" aria-label="Main Navigation">
             <a
+              href="#map-section"
+              className="vas-nav-link"
+              onClick={(e) => handleLinkClick(e, "map-section")}
+            >
+              WORLD
+            </a>
+
+            <a
               href="#about"
               className="vas-nav-link"
               onClick={(e) => handleLinkClick(e, "about")}
             >
-              About
+              ABOUT US
             </a>
 
             <a
@@ -62,7 +70,7 @@ export default function Navbar({ isUnlocked, onNavigate }) {
               className="vas-nav-link"
               onClick={(e) => handleLinkClick(e, "vas-key")}
             >
-              VAS Key
+              VAS KEY
               {isUnlocked ? (
                 <span className="nav-badge">Unlocked</span>
               ) : (
@@ -70,25 +78,15 @@ export default function Navbar({ isUnlocked, onNavigate }) {
               )}
             </a>
 
-            {/* Private Services & Collections Links (Shown only after VAS Key is entered) */}
+            {/* Curated Collections Link (Shown when unlocked) */}
             {isUnlocked && (
-              <>
-                <a
-                  href="#map-section"
-                  className="vas-nav-link"
-                  onClick={(e) => handleLinkClick(e, "map-section")}
-                >
-                  Craft Map
-                </a>
-
-                <a
-                  href="#collections"
-                  className="vas-nav-link"
-                  onClick={(e) => handleLinkClick(e, "collections")}
-                >
-                  Collections
-                </a>
-              </>
+              <a
+                href="#collections"
+                className="vas-nav-link"
+                onClick={(e) => handleLinkClick(e, "collections")}
+              >
+                COLLECTIONS
+              </a>
             )}
 
             <a
@@ -96,7 +94,7 @@ export default function Navbar({ isUnlocked, onNavigate }) {
               className="vas-nav-link vas-nav-link-cta"
               onClick={(e) => handleLinkClick(e, "contact")}
             >
-              Contact
+              CONTACT US
             </a>
           </nav>
 

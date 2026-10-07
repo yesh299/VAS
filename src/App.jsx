@@ -60,6 +60,17 @@ export default function App() {
   };
 
   const handleScrollToSection = (sectionId) => {
+    if (sectionId === "map-section" && !isUnlocked) {
+      const keyEl = document.getElementById("vas-key");
+      if (keyEl) {
+        if (lenisRef.current) {
+          lenisRef.current.scrollTo(keyEl, { duration: 1.2, offset: -10 });
+        } else {
+          keyEl.scrollIntoView({ behavior: "smooth" });
+        }
+        return;
+      }
+    }
     const el = document.getElementById(sectionId);
     if (el) {
       if (lenisRef.current) {
@@ -117,7 +128,10 @@ export default function App() {
         )}
 
         {/* 5. Contact, Global Ateliers & Brand Footer (Follows directly after Curated Editions) */}
-        <Contact onGetInTouch={() => setSelectedInquiry(collections[0])} />
+        <Contact
+          onNavigate={handleScrollToSection}
+          onGetInTouch={() => setSelectedInquiry(collections[0])}
+        />
       </main>
 
       {/* Acquisition & Bespoke Modal */}

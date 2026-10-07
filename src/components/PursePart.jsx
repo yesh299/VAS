@@ -1,30 +1,60 @@
-import React from 'react';
-import './PursePart.css';
+import React from "react";
+import "./PursePart.css";
 
 /**
  * High-fidelity luxury vector component for individual handbag parts
  * precisely tailored to the user's reference palette:
  * Burgundy Silk, Olive Leather, Ivory Flap, Gold Hardware, and Rolled Handle.
  */
-export default function PursePart({ id, name, forwardRef, style, isAssembled }) {
+export default function PursePart({
+  id,
+  name,
+  forwardRef,
+  style,
+  isAssembled,
+}) {
   const renderPartContent = () => {
     switch (id) {
-      case 'body':
+      case "body":
         // Part 1: Main Leather Handbag Base Body
         return (
           <svg viewBox="0 0 320 220" className="part-svg body-svg">
             <defs>
-              <linearGradient id="bodyLeatherV" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient
+                id="bodyLeatherV"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
                 <stop offset="0%" stopColor="#FFFDF9" />
                 <stop offset="50%" stopColor="#F5ECE0" />
                 <stop offset="100%" stopColor="#DFD2C0" />
               </linearGradient>
-              <linearGradient id="sideGussetOlive" x1="0%" y1="0%" x2="100%" y2="0%">
+              <linearGradient
+                id="sideGussetOlive"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
                 <stop offset="0%" stopColor="#8A7A5C" />
                 <stop offset="100%" stopColor="#B3A284" />
               </linearGradient>
-              <filter id="pShadowFilter" x="-10%" y="-10%" width="120%" height="130%">
-                <feDropShadow dx="0" dy="14" stdDeviation="14" floodColor="#1C1814" floodOpacity="0.22" />
+              <filter
+                id="pShadowFilter"
+                x="-10%"
+                y="-10%"
+                width="120%"
+                height="130%"
+              >
+                <feDropShadow
+                  dx="0"
+                  dy="14"
+                  stdDeviation="14"
+                  floodColor="#1C1814"
+                  floodOpacity="0.22"
+                />
               </filter>
             </defs>
 
@@ -57,18 +87,38 @@ export default function PursePart({ id, name, forwardRef, style, isAssembled }) 
                 opacity="0.75"
               />
               {/* Gold Base Studs */}
-              <circle cx="55" cy="202" r="4" fill="#D4BA93" stroke="#9A7B4D" strokeWidth="1" />
-              <circle cx="265" cy="202" r="4" fill="#D4BA93" stroke="#9A7B4D" strokeWidth="1" />
+              <circle
+                cx="55"
+                cy="202"
+                r="4"
+                fill="#D4BA93"
+                stroke="#9A7B4D"
+                strokeWidth="1"
+              />
+              <circle
+                cx="265"
+                cy="202"
+                r="4"
+                fill="#D4BA93"
+                stroke="#9A7B4D"
+                strokeWidth="1"
+              />
             </g>
           </svg>
         );
 
-      case 'burgundy-silk':
+      case "burgundy-silk":
         // Part 2: Dramatic Flowing Burgundy Silk Ribbon Swatch
         return (
           <svg viewBox="0 0 200 160" className="part-svg ribbon-svg">
             <defs>
-              <linearGradient id="burgundySilkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient
+                id="burgundySilkGrad"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
                 <stop offset="0%" stopColor="#9C2D43" />
                 <stop offset="40%" stopColor="#75182B" />
                 <stop offset="80%" stopColor="#540E1E" />
@@ -93,12 +143,18 @@ export default function PursePart({ id, name, forwardRef, style, isAssembled }) 
           </svg>
         );
 
-      case 'flap':
+      case "flap":
         // Part 3: Architectural Front Curved Ivory Flap
         return (
           <svg viewBox="0 0 300 160" className="part-svg flap-svg">
             <defs>
-              <linearGradient id="flapLeatherV" x1="0%" y1="0%" x2="0%" y2="100%">
+              <linearGradient
+                id="flapLeatherV"
+                x1="0%"
+                y1="0%"
+                x2="0%"
+                y2="100%"
+              >
                 <stop offset="0%" stopColor="#FFFDF9" />
                 <stop offset="60%" stopColor="#F5ECE0" />
                 <stop offset="100%" stopColor="#E5D6C3" />
@@ -123,12 +179,18 @@ export default function PursePart({ id, name, forwardRef, style, isAssembled }) 
           </svg>
         );
 
-      case 'lock':
+      case "lock":
         // Part 4: Champagne Gold Monogram Clasp & Lock
         return (
           <svg viewBox="0 0 120 120" className="part-svg lock-svg">
             <defs>
-              <linearGradient id="goldMetallicV" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient
+                id="goldMetallicV"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
                 <stop offset="0%" stopColor="#FFF2D6" />
                 <stop offset="25%" stopColor="#D4BA93" />
                 <stop offset="50%" stopColor="#FFECC7" />
@@ -137,24 +199,62 @@ export default function PursePart({ id, name, forwardRef, style, isAssembled }) 
               </linearGradient>
             </defs>
             <g filter="url(#pShadowFilter)">
-              <rect x="30" y="20" width="60" height="70" rx="8" fill="url(#goldMetallicV)" stroke="#7A5F35" strokeWidth="1.5" />
-              <text x="60" y="38" textAnchor="middle" fontFamily="Cinzel, serif" fontSize="8" letterSpacing="2" fill="#4A381F" fontWeight="700">
+              <rect
+                x="30"
+                y="20"
+                width="60"
+                height="70"
+                rx="8"
+                fill="url(#goldMetallicV)"
+                stroke="#7A5F35"
+                strokeWidth="1.5"
+              />
+              <text
+                x="60"
+                y="38"
+                textAnchor="middle"
+                fontFamily="Cinzel, serif"
+                fontSize="8"
+                letterSpacing="2"
+                fill="#4A381F"
+                fontWeight="700"
+              >
                 VAS
               </text>
-              <circle cx="60" cy="58" r="14" fill="#9A7B4D" stroke="#FFF2D6" strokeWidth="1.5" />
-              <rect x="57" y="48" width="6" height="20" rx="3" fill="url(#goldMetallicV)" />
+              <circle
+                cx="60"
+                cy="58"
+                r="14"
+                fill="#9A7B4D"
+                stroke="#FFF2D6"
+                strokeWidth="1.5"
+              />
+              <rect
+                x="57"
+                y="48"
+                width="6"
+                height="20"
+                rx="3"
+                fill="url(#goldMetallicV)"
+              />
               <circle cx="38" cy="28" r="2.5" fill="#4A381F" />
               <circle cx="82" cy="28" r="2.5" fill="#4A381F" />
             </g>
           </svg>
         );
 
-      case 'handle':
+      case "handle":
         // Part 5: Rolled Calfskin Leather Arch Handle
         return (
           <svg viewBox="0 0 280 180" className="part-svg handle-svg">
             <defs>
-              <linearGradient id="handleLeatherV" x1="0%" y1="0%" x2="0%" y2="100%">
+              <linearGradient
+                id="handleLeatherV"
+                x1="0%"
+                y1="0%"
+                x2="0%"
+                y2="100%"
+              >
                 <stop offset="0%" stopColor="#FFFDF9" />
                 <stop offset="50%" stopColor="#EFE6DA" />
                 <stop offset="100%" stopColor="#D4BA93" />
@@ -175,15 +275,45 @@ export default function PursePart({ id, name, forwardRef, style, isAssembled }) 
                 strokeWidth="1"
                 strokeDasharray="4 3"
               />
-              <rect x="40" y="135" width="20" height="16" rx="3" fill="url(#goldMetallicV)" stroke="#7A5F35" />
-              <circle cx="50" cy="155" r="8" fill="none" stroke="url(#goldMetallicV)" strokeWidth="3.5" />
-              <rect x="220" y="135" width="20" height="16" rx="3" fill="url(#goldMetallicV)" stroke="#7A5F35" />
-              <circle cx="230" cy="155" r="8" fill="none" stroke="url(#goldMetallicV)" strokeWidth="3.5" />
+              <rect
+                x="40"
+                y="135"
+                width="20"
+                height="16"
+                rx="3"
+                fill="url(#goldMetallicV)"
+                stroke="#7A5F35"
+              />
+              <circle
+                cx="50"
+                cy="155"
+                r="8"
+                fill="none"
+                stroke="url(#goldMetallicV)"
+                strokeWidth="3.5"
+              />
+              <rect
+                x="220"
+                y="135"
+                width="20"
+                height="16"
+                rx="3"
+                fill="url(#goldMetallicV)"
+                stroke="#7A5F35"
+              />
+              <circle
+                cx="230"
+                cy="155"
+                r="8"
+                fill="none"
+                stroke="url(#goldMetallicV)"
+                strokeWidth="3.5"
+              />
             </g>
           </svg>
         );
 
-      case 'chain':
+      case "chain":
         // Part 6: Faceted Luxury Gold Curb Chain
         return (
           <svg viewBox="0 0 260 120" className="part-svg chain-svg">
@@ -202,12 +332,17 @@ export default function PursePart({ id, name, forwardRef, style, isAssembled }) 
           </svg>
         );
 
-      case 'clochette':
+      case "clochette":
         // Part 7: Burgundy Leather Clochette & Monogram Key Tag
         return (
           <svg viewBox="0 0 80 140" className="part-svg clochette-svg">
             <g filter="url(#pShadowFilter)">
-              <path d="M 40 10 L 40 60" stroke="#B89768" strokeWidth="2.5" strokeLinecap="round" />
+              <path
+                d="M 40 10 L 40 60"
+                stroke="#B89768"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
               <path
                 d="M 40 60 L 20 115 Q 40 125 60 115 Z"
                 fill="url(#burgundySilkGrad)"
@@ -237,7 +372,7 @@ export default function PursePart({ id, name, forwardRef, style, isAssembled }) 
   return (
     <div
       ref={forwardRef}
-      className={`purse-part purse-part-${id} ${isAssembled ? 'assembled' : 'floating'}`}
+      className={`purse-part purse-part-${id} ${isAssembled ? "assembled" : "floating"}`}
       style={style}
       data-part-id={id}
       aria-label={name}

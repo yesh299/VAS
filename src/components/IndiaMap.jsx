@@ -78,8 +78,8 @@ export default function IndiaMap({ onExploreCollection }) {
             {/* Illustrated Map */}
             <div className="india-illustrated-map-frame">
               <img
-                src="/assets/map/india_craft_illustrated_map.jpg"
-                alt="India, craft by craft - Cartography"
+                src="/assets/map/india_craft_user_map.png"
+                alt="Illustrated map of India and its craft heritage"
                 className="india-illustrated-map-img"
               />
             </div>
