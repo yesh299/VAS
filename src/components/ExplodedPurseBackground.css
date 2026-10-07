@@ -21,6 +21,7 @@
   background: radial-gradient(circle, rgba(255, 250, 240, 0.7) 0%, rgba(245, 235, 220, 0.3) 55%, transparent 75%);
   filter: blur(50px);
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .exploded-piece-node {

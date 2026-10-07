@@ -1,8 +1,12 @@
 .vas-india-map-section {
   position: relative;
-  background: #F3EAD7;
+  background-color: #F1E1C1;
+  background-image:
+    radial-gradient(ellipse at 12% 20%, rgba(190, 157, 105, 0.11) 0%, rgba(190, 157, 105, 0.04) 18%, transparent 42%),
+    radial-gradient(ellipse at 88% 72%, rgba(214, 185, 133, 0.1) 0%, rgba(214, 185, 133, 0.035) 22%, transparent 46%),
+    radial-gradient(ellipse at 48% 105%, rgba(170, 136, 91, 0.07) 0%, transparent 38%);
   border-top: 1px solid rgba(212, 186, 147, 0.25);
-  padding: 5.5rem 0 6rem;
+  padding: 5rem 0 6rem;
   overflow: hidden;
 }
 
@@ -17,7 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 3rem;
+  margin-bottom: 2.25rem;
   gap: 2.5rem;
 }
 
@@ -27,7 +31,7 @@
 
 .map-editorial-title {
   font-family: var(--font-serif-heading);
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-size: clamp(2.25rem, 4vw, 3.35rem);
   line-height: 1.05;
   color: var(--text-primary);
   font-weight: 500;
@@ -70,6 +74,38 @@
   justify-content: center;
 }
 
+.map-archives-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 1.5rem auto 0;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid var(--gold-500);
+  border-radius: var(--radius-pill);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.map-archives-cta span {
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.map-archives-cta:hover {
+  background-color: var(--gold-500);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.map-archives-cta:hover span {
+  transform: translateX(3px);
+}
+
 /* Illustrated Map Frame */
 .india-illustrated-map-frame {
   position: relative;
@@ -80,7 +116,7 @@
   border: 1px solid rgba(212, 186, 147, 0.45);
   box-shadow: 0 20px 60px rgba(28, 25, 23, 0.08),
               0 0 35px rgba(184, 151, 104, 0.12);
-  background: #F3EAD7;
+  background: #F2E9D6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,6 +208,41 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .vas-india-map-section {
+    padding: 4rem 0 4.5rem;
+  }
+
+  .map-editorial-container {
+    padding: 0 1.25rem;
+  }
+
+  .map-editorial-title {
+    font-size: clamp(2rem, 11vw, 2.7rem);
+  }
+
+  .map-editorial-subtitle {
+    font-size: 1rem;
+  }
+
+  .map-quick-selector {
+    align-items: flex-start;
+  }
+
+  .quick-pills-list {
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0.15rem 0.1rem 0.5rem;
+    scrollbar-width: thin;
+  }
+
+  .quick-pill {
+    flex: 0 0 auto;
   }
 }
 

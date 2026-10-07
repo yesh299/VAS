@@ -15,6 +15,8 @@ export default function FloatingPurseLayers({
   const stageRef = useRef(null);
   const cardRef = useRef(null);
   const [activeLayer, setActiveLayer] = useState(null);
+  const tiltX = useRef(null);
+  const tiltY = useRef(null);
 
   const layers = [
     {
@@ -107,6 +109,19 @@ export default function FloatingPurseLayers({
     return () => floatTween.kill();
   }, []);
 
+  useEffect(() => {
+    if (!stageRef.current) return;
+    gsap.set(stageRef.current, { transformPerspective: 1000 });
+    tiltX.current = gsap.quickTo(stageRef.current, "rotateX", {
+      duration: 0.6,
+      ease: "power2.out",
+    });
+    tiltY.current = gsap.quickTo(stageRef.current, "rotateY", {
+      duration: 0.6,
+      ease: "power2.out",
+    });
+  }, []);
+
   // 3D Mouse Parallax Tilt Effect
   const handleMouseMove = (e) => {
     if (!containerRef.current || !stageRef.current) return;
@@ -120,13 +135,10 @@ export default function FloatingPurseLayers({
     const rotateX = ((y - centerY) / centerY) * -6;
     const rotateY = ((x - centerX) / centerX) * 6;
 
-    gsap.to(stageRef.current, {
-      rotateX: rotateX,
-      rotateY: rotateY,
-      duration: 0.6,
-      ease: "power2.out",
-      transformPerspective: 1000,
-    });
+    if (tiltX.current && tiltY.current) {
+      tiltX.current(rotateX);
+      tiltY.current(rotateY);
+    }
   };
 
   const handleMouseLeave = () => {

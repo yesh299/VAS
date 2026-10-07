@@ -11,6 +11,8 @@ export function setupCursorTracking(cursorDotRef, cursorRingRef) {
   let ringX = -100;
   let ringY = -100;
   let hasMoved = false;
+  const moveDot = gsap.quickTo(dot, 'x', { duration: 0.12, ease: 'power2.out' });
+  const moveDotY = gsap.quickTo(dot, 'y', { duration: 0.12, ease: 'power2.out' });
 
   const onMouseMove = (e) => {
     mouseX = e.clientX;
@@ -24,12 +26,8 @@ export function setupCursorTracking(cursorDotRef, cursorRingRef) {
     }
 
     // Instant dot movement
-    gsap.to(dot, {
-      x: mouseX,
-      y: mouseY,
-      duration: 0.08,
-      ease: 'power2.out',
-    });
+    moveDot(mouseX);
+    moveDotY(mouseY);
   };
 
   // Smooth lerp for outer ring using ticker

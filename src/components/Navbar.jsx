@@ -5,6 +5,7 @@ import "./Navbar.css";
 export default function Navbar({ isUnlocked, onNavigate }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +19,26 @@ export default function Navbar({ isUnlocked, onNavigate }) {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const sections = ["hero", "about", "vas-key", "map-section", "collections", "contact"]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    if (!sections.length) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visibleSection) setActiveSection(visibleSection.target.id);
+      },
+      { rootMargin: "-20% 0px -60% 0px", threshold: [0, 0.25, 0.5, 0.75] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [isUnlocked]);
 
   const handleLinkClick = (e, sectionId) => {
     e.preventDefault();
@@ -51,7 +72,7 @@ export default function Navbar({ isUnlocked, onNavigate }) {
           <nav className="vas-nav-desktop" aria-label="Main Navigation">
             <a
               href="#map-section"
-              className="vas-nav-link"
+              className={`vas-nav-link ${activeSection === "map-section" ? "active" : ""}`}
               onClick={(e) => handleLinkClick(e, "map-section")}
             >
               WORLD
@@ -59,7 +80,7 @@ export default function Navbar({ isUnlocked, onNavigate }) {
 
             <a
               href="#about"
-              className="vas-nav-link"
+              className={`vas-nav-link ${activeSection === "about" ? "active" : ""}`}
               onClick={(e) => handleLinkClick(e, "about")}
             >
               ABOUT US
@@ -67,7 +88,7 @@ export default function Navbar({ isUnlocked, onNavigate }) {
 
             <a
               href="#vas-key"
-              className="vas-nav-link"
+              className={`vas-nav-link ${activeSection === "vas-key" ? "active" : ""}`}
               onClick={(e) => handleLinkClick(e, "vas-key")}
             >
               VAS KEY
@@ -82,7 +103,7 @@ export default function Navbar({ isUnlocked, onNavigate }) {
             {isUnlocked && (
               <a
                 href="#collections"
-                className="vas-nav-link"
+                className={`vas-nav-link ${activeSection === "collections" ? "active" : ""}`}
                 onClick={(e) => handleLinkClick(e, "collections")}
               >
                 COLLECTIONS
@@ -91,7 +112,7 @@ export default function Navbar({ isUnlocked, onNavigate }) {
 
             <a
               href="#contact"
-              className="vas-nav-link vas-nav-link-cta"
+              className={`vas-nav-link vas-nav-link-cta ${activeSection === "contact" ? "active" : ""}`}
               onClick={(e) => handleLinkClick(e, "contact")}
             >
               CONTACT US

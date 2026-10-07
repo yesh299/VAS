@@ -148,22 +148,27 @@ export default function VASKeySection({ isUnlocked, onUnlockSuccess }) {
     }, sectionRef);
 
     // Mouse parallax over the VAS Key Section
+    let frameId = 0;
+    let pointerX = 0;
+    let pointerY = 0;
     const handleMouseMove = (e) => {
-      if (status === "assembling" || status === "assembled" || isUnlocked)
-        return;
-      const rect = sectionRef.current?.getBoundingClientRect();
-      if (!rect) return;
-      const normX =
-        (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
-      const normY =
-        (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-
-      partsConfig.forEach((p) => {
-        if (p.ref.current) {
-          const moveX = normX * 18 * p.depth;
-          const moveY = normY * 18 * p.depth;
-          p.ref.current.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) rotate(${p.initial.rot}deg) scale(${p.initial.scale})`;
-        }
+      pointerX = e.clientX;
+      pointerY = e.clientY;
+      if (frameId) return;
+      frameId = requestAnimationFrame(() => {
+        frameId = 0;
+        if (status === "assembling" || status === "assembled" || isUnlocked) return;
+        const rect = sectionRef.current?.getBoundingClientRect();
+        if (!rect) return;
+        const normX = (pointerX - (rect.left + rect.width / 2)) / (rect.width / 2);
+        const normY = (pointerY - (rect.top + rect.height / 2)) / (rect.height / 2);
+        partsConfig.forEach((p) => {
+          if (p.ref.current) {
+            const moveX = normX * 18 * p.depth;
+            const moveY = normY * 18 * p.depth;
+            p.ref.current.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) rotate(${p.initial.rot}deg) scale(${p.initial.scale})`;
+          }
+        });
       });
     };
 
@@ -172,6 +177,7 @@ export default function VASKeySection({ isUnlocked, onUnlockSuccess }) {
     return () => {
       ctx.revert();
       window.removeEventListener("mousemove", handleMouseMove);
+      if (frameId) cancelAnimationFrame(frameId);
     };
   }, [status, isUnlocked]);
 

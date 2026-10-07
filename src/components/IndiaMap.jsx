@@ -10,7 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function IndiaMap({ onExploreCollection }) {
   const [selectedLocation, setSelectedLocation] = useState(locations[0]); // Default to Banarasi/UP
-  const [hoveredLocation, setHoveredLocation] = useState(null);
   const mapSectionRef = useRef(null);
   const mapSvgWrapperRef = useRef(null);
   const titleRef = useRef(null);
@@ -92,8 +91,6 @@ export default function IndiaMap({ onExploreCollection }) {
                   location={loc}
                   isSelected={selectedLocation?.id === loc.id}
                   onClick={handlePointClick}
-                  onMouseEnter={(l) => setHoveredLocation(l)}
-                  onMouseLeave={() => setHoveredLocation(null)}
                 />
               ))}
             </div>
@@ -106,6 +103,15 @@ export default function IndiaMap({ onExploreCollection }) {
             />
           </div>
         </div>
+
+        <button
+          type="button"
+          className="map-archives-cta"
+          onClick={() => onExploreCollection?.(selectedLocation)}
+          data-cursor="pointer"
+        >
+          Explore craft archives <span aria-hidden="true">→</span>
+        </button>
 
         {/* Locations Directory Quick Selector */}
         <div className="map-quick-selector">

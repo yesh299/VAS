@@ -128,6 +128,71 @@ export const collections = [
     materials: "Supple Cream Nappa / 24K Gold Curb Chains / Saddle Straps",
     tag: "Modern Atelier",
     price: "Inquire for Bespoke Acquisition"
+  },
+  {
+    id: "monsoon-envelope",
+    name: "MONSOON ENVELOPE",
+    category: "silk",
+    region: "Atelier VAS",
+    subtitle: "Edition N° 11",
+    origin: "Atelier VAS · Material Study",
+    description: "A softly structured envelope silhouette layered in raw linen, crimson silk, and restrained gold chainwork.",
+    image: "/assets/products/floating_hero.jpg",
+    materials: "Raw Linen / Silk Velvet / Gold Curb Chain",
+    tag: "Material Study",
+    price: "Inquire for Bespoke Acquisition"
+  },
+  {
+    id: "twilight-carryall",
+    name: "TWILIGHT CARRYALL",
+    category: "leather",
+    region: "Atelier VAS",
+    subtitle: "Edition N° 12",
+    origin: "Atelier VAS · Evening Archive",
+    description: "A sculptural carryall balancing ivory calfskin, espresso leather panels, and jewel-like champagne hardware.",
+    image: "/assets/products/story_purse.jpg",
+    materials: "Ivory Calfskin / Espresso Leather / Champagne Gold",
+    tag: "Evening Archive",
+    price: "Inquire for Bespoke Acquisition"
+  },
+  {
+    id: "courtyard-satchel",
+    name: "COURTYARD SATCHEL",
+    category: "silk",
+    region: "Uttar Pradesh",
+    subtitle: "Edition N° 13",
+    origin: "Uttar Pradesh · Varanasi",
+    description: "A hand-finished satchel pairing antique gold brocade with ivory leather, saddle handles, and a patinated clasp.",
+    image: "/assets/products/banarasi.jpg",
+    materials: "Banarasi Brocade / Ivory Leather / Aged Brass",
+    tag: "Craft Heritage",
+    price: "Inquire for Bespoke Acquisition"
+  },
+  {
+    id: "emerald-medallion",
+    name: "EMERALD MEDALLION CLUTCH",
+    category: "metal",
+    region: "West Bengal",
+    subtitle: "Edition N° 14",
+    origin: "West Bengal · Kolkata",
+    description: "Deep emerald velvet frames a sculpted heritage medallion, finished with a fine gold chain for evening movement.",
+    image: "/assets/products/bengal.jpg",
+    materials: "Emerald Velvet / Cast Metal Medallion / Gold Chain",
+    tag: "Jewel Box Series",
+    price: "Inquire for Bespoke Acquisition"
+  },
+  {
+    id: "atelier-fold",
+    name: "ATELIER FOLD BAG",
+    category: "leather",
+    region: "Atelier VAS",
+    subtitle: "Edition N° 15",
+    origin: "Atelier VAS · Form Archive",
+    description: "A geometric fold bag engineered in warm canvas and burgundy silk, with a quiet architectural profile.",
+    image: "/assets/products/hero_purse.jpg",
+    materials: "Organic Canvas / Burgundy Silk / Brushed Gold",
+    tag: "Form Archive",
+    price: "Inquire for Bespoke Acquisition"
   }
 ];
 

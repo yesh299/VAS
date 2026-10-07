@@ -143,19 +143,27 @@ export default function ExplodedPurseBackground({ className = '', interactive = 
     }, containerRef);
 
     // Mouse parallax tracking over full screen
+    let frameId = 0;
+    let pointerX = 0;
+    let pointerY = 0;
     const handleMouseMove = (e) => {
       if (!interactive || !containerRef.current) return;
-      const { innerWidth, innerHeight } = window;
-      const normX = (e.clientX - innerWidth / 2) / (innerWidth / 2);
-      const normY = (e.clientY - innerHeight / 2) / (innerHeight / 2);
-
-      explodedPieces.forEach((p, idx) => {
-        const el = pieceRefs.current[idx];
-        if (el) {
-          const moveX = normX * 24 * p.depth;
-          const moveY = normY * 24 * p.depth;
-          el.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) rotate(${p.initialRot}deg)`;
-        }
+      pointerX = e.clientX;
+      pointerY = e.clientY;
+      if (frameId) return;
+      frameId = requestAnimationFrame(() => {
+        frameId = 0;
+        const { innerWidth, innerHeight } = window;
+        const normX = (pointerX - innerWidth / 2) / (innerWidth / 2);
+        const normY = (pointerY - innerHeight / 2) / (innerHeight / 2);
+        explodedPieces.forEach((p, idx) => {
+          const el = pieceRefs.current[idx];
+          if (el) {
+            const moveX = normX * 24 * p.depth;
+            const moveY = normY * 24 * p.depth;
+            el.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) rotate(${p.initialRot}deg)`;
+          }
+        });
       });
     };
 
@@ -164,6 +172,7 @@ export default function ExplodedPurseBackground({ className = '', interactive = 
     return () => {
       ctx.revert();
       window.removeEventListener('mousemove', handleMouseMove);
+      if (frameId) cancelAnimationFrame(frameId);
     };
   }, [interactive]);
 
